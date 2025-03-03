@@ -5,7 +5,7 @@ admin/node_modules/
 
 # Build folders
 backend/src/uploads/*
-!backend/src/uploads/
+!backend/src/uploads/.gitkeep
 
 # Environment files
 backend/.env
