@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import "./PlaceOrder.css";
 import { StoreContext } from "../../context/StoreContext";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const PlaceOrder = () => {
   const {
@@ -11,6 +12,7 @@ const PlaceOrder = () => {
     item: cartItem,
     token,
   } = useContext(StoreContext);
+
   const [data, setData] = useState({
     firstName: "",
     lastName: "",
@@ -22,6 +24,8 @@ const PlaceOrder = () => {
     country: "",
     phone: "",
   });
+
+  const navigate = useNavigate();
 
   const changeHandle = (e) => {
     const { name } = e.target;
@@ -59,6 +63,12 @@ const PlaceOrder = () => {
       alert("Error");
     }
   };
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/");
+    }
+  }, [token]);
 
   return (
     <form onSubmit={submitHandle} className="place-order">

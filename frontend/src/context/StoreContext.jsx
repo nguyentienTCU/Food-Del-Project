@@ -49,7 +49,7 @@ const StoreContextProvider = ({ children }) => {
     setFoodList(response.data.data);
   };
 
-  const loadData = async (token) => {
+  const loadCartData = async (token) => {
     const response = await axios.get(backendUrl + "/api/cart/get", {
       headers: { token },
     });
@@ -57,11 +57,14 @@ const StoreContextProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    const fetchData = async () => {
+    async function loadData() {
       await fetchFood();
-      loadData(localStorage.getItem("token"));
-    };
-    fetchData();
+      if (localStorage.getItem("token")) {
+        setToken(localStorage.getItem("token"));
+        await loadCartData(localStorage.getItem("token"));
+      }
+    }
+    loadData();
   }, []);
 
   const contextValue = {
