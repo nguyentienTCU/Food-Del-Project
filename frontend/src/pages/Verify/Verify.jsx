@@ -12,8 +12,6 @@ const Verify = () => {
   const navigate = useNavigate();
 
   const verifyPayment = async () => {
-    console.log(success);
-    console.log(orderId);
     const response = await axios.post(
       backendUrl + "/api/order/verify",
       {
@@ -22,7 +20,7 @@ const Verify = () => {
       },
       { headers: { token } }
     );
-    console.log(response.data);
+
     if (response.data.success) {
       navigate("/myorders");
     } else {

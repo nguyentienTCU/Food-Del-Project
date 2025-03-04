@@ -17,10 +17,6 @@ const Navbar = ({ setShowLogin }) => {
   };
 
   useEffect(() => {
-    const storedToken = localStorage.getItem("token");
-    if (storedToken) {
-      setToken(storedToken);
-    }
     setLoading(false);
   }, []);
 
@@ -55,7 +51,7 @@ const Navbar = ({ setShowLogin }) => {
         </HashLink>
         <HashLink
           smooth
-          to="/#footer"
+          to="#footer"
           onClick={() => setMenu("contact-us")}
           className={menu === "contact-us" ? "active" : ""}
         >
@@ -76,7 +72,7 @@ const Navbar = ({ setShowLogin }) => {
           <div className="navbar-profile">
             <img src={assets.profile_icon} />
             <ul className="nav-profile-dropdown">
-              <li>
+              <li onClick={() => navigate("/myorders")}>
                 <img src={assets.bag_icon} />
                 <p>Orders</p>
               </li>

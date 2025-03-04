@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import "./Cart.css";
 import { StoreContext } from "../../context/StoreContext";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Cart = () => {
   const {
@@ -10,8 +11,20 @@ const Cart = () => {
     removeItem,
     getTotalBill,
     backendUrl,
+    token,
   } = useContext(StoreContext);
   const navigate = useNavigate();
+  const checkout = () => {
+    if (!token) {
+      toast.error("You have to login first");
+    } else {
+      if (getTotalBill() === 0) {
+        toast.error("There's no item to checkout");
+      } else {
+        navigate("/order");
+      }
+    }
+  };
   return (
     <div className="cart">
       <div className="cart-items">
@@ -25,7 +38,7 @@ const Cart = () => {
         </div>
         <br />
         <hr />
-        {food_list.map((item, index) => {
+        {food_list.map((item) => {
           if (cartItem[item._id] > 0) {
             return (
               <div>
@@ -64,9 +77,7 @@ const Cart = () => {
               <b>${getTotalBill() === 0 ? 0 : getTotalBill() + 2}</b>
             </div>
           </div>
-          <button onClick={() => navigate("/order")}>
-            PROCEED TO CHECKOUT
-          </button>
+          <button onClick={checkout}>PROCEED TO CHECKOUT</button>
         </div>
         <div className="cart-promo-code">
           <div>
