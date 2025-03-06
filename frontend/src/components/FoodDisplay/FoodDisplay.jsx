@@ -1,20 +1,17 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { StoreContext } from "../../context/StoreContext";
 import "./FoodDisplay.css";
 import FoodItem from "../FoodItem/FoodItem";
 
 const FoodDisplay = ({ category }) => {
-  const { food_list, search, showSearch } = useContext(StoreContext);
+  const { food_list, search } = useContext(StoreContext);
 
   const filteredList = food_list.filter((item) => {
-    if (showSearch) {
-      const matchesCategory = category === "" || category === item.category;
-      const matchesSearch = item.name
-        .toLowerCase()
-        .includes(search.toLowerCase());
-      return matchesCategory && matchesSearch;
-    }
-    return item;
+    const matchesCategory = category === "" || category === item.category;
+    const matchesSearch = item.name
+      .toLowerCase()
+      .includes(search.toLowerCase());
+    return matchesCategory && matchesSearch;
   });
 
   return (

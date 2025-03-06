@@ -24,7 +24,12 @@ const SearchBar = () => {
             placeholder="Search"
           />
           <img className="search-icon" src={assets.search_icon} />
-          <div className="close-btn" onClick={() => setShowSearch(false)}>
+          <div
+            className="close-btn"
+            onClick={() => {
+              setShowSearch(false), setSearch("");
+            }}
+          >
             <img src={assets.cross_icon} />
           </div>
         </div>
