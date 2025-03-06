@@ -9,6 +9,7 @@ import LoginPopup from "./components/LoginPopup/LoginPopup.jsx";
 import { ToastContainer } from "react-toastify";
 import Verify from "./pages/Verify/Verify.jsx";
 import MyOrders from "./pages/MyOrders/MyOrders.jsx";
+import SearchBar from "./components/SearchBar/SearchBar.jsx";
 
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
@@ -18,6 +19,7 @@ const App = () => {
       {showLogin && <LoginPopup setShowLogin={setShowLogin} />}
       <div className="app">
         <Navbar setShowLogin={setShowLogin} />
+        <SearchBar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/cart" element={<Cart />}></Route>

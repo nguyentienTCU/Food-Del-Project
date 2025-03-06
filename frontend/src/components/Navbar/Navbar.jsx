@@ -7,7 +7,8 @@ import { HashLink } from "react-router-hash-link";
 
 const Navbar = ({ setShowLogin }) => {
   const [menu, setMenu] = useState("home");
-  const { getTotalBill, setToken, token } = useContext(StoreContext);
+  const { getTotalBill, setToken, token, setShowSearch } =
+    useContext(StoreContext);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const logout = () => {
@@ -59,7 +60,11 @@ const Navbar = ({ setShowLogin }) => {
         </HashLink>
       </ul>
       <div className="navbar-right">
-        <img src={assets.search_icon} />
+        <img
+          className="search-button"
+          onClick={() => setShowSearch(true)}
+          src={assets.search_icon}
+        />
         <div className="navbar-search-icon">
           <Link onClick={() => setMenu("")} to="/cart">
             <img src={assets.basket_icon} />

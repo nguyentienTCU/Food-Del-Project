@@ -8,6 +8,8 @@ const StoreContextProvider = ({ children }) => {
   const backendUrl = "http://localhost:4000";
   const [token, setToken] = useState("");
   const [food_list, setFoodList] = useState([]);
+  const [search, setSearch] = useState("");
+  const [showSearch, setShowSearch] = useState(false);
 
   const addItem = async (itemId) => {
     if (!item[itemId]) {
@@ -76,6 +78,10 @@ const StoreContextProvider = ({ children }) => {
     backendUrl,
     token,
     setToken,
+    search,
+    setSearch,
+    showSearch,
+    setShowSearch,
   };
 
   return (

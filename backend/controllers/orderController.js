@@ -8,7 +8,7 @@ dotenv.config();
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 const placeOrder = async (req, res) => {
-  const frontendURL = "http://localhost:5174";
+  const frontendURL = "http://localhost:5173";
 
   try {
     const newOrder = await orderModel.create({

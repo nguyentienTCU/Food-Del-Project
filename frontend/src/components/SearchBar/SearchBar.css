@@ -1,0 +1,78 @@
+/* Container for the search bar */
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+  }
+  
+  /* Search bar layout */
+  .search-bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 25px;
+    padding: 8px 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Search icon (left side) inside the input bar */
+  .search-icon {
+    position: absolute;
+    left: 15px;
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+  }
+  
+  /* Input field styling */
+  .search-bar input {
+    width: 200%;
+    padding: 10px 30px; /* Added padding to the right to make space for close icon */
+    font-size: 16px;
+    border: 0px solid #ddd;
+    border-radius: 25px;
+    outline: none;
+    background-color: transparent;
+    color: #333;
+  }
+  
+  /* Close button (cross icon) on the right side */
+  .close-btn {
+    position: absolute;
+    right: 15px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+  
+  /* Hover effect for close button */
+  .close-btn img {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease;
+  }
+  
+  .close-btn img:hover {
+    transform: rotate(90deg);
+  }
+  
+  /* Responsive design adjustments */
+  @media (max-width: 600px) {
+    .search-container {
+      margin: 10px;
+    }
+  
+    .search-bar {
+      padding: 8px 12px;
+    }
+  
+    .search-bar input {
+      font-size: 14px;
+    }
+  }
+  
